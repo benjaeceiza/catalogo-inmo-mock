@@ -1,0 +1,94 @@
+.property-detail-page {
+  padding: 2rem 5%;
+  background-color: #f8fafc;
+}
+
+.detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: #64748b; text-decoration: none; font-weight: 600; margin-bottom: 2rem; transition: color 0.2s;
+}
+.back-link:hover { color: #0f172a; }
+
+/* Header */
+.detail-header {
+  display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; margin-bottom: 2rem;
+}
+.badges-wrapper { margin-bottom: 15px; }
+.status-badge-lg { padding: 6px 14px; border-radius: 6px; font-weight: 700; color: white; margin-right: 10px; font-size: 0.9rem;}
+.status-badge-lg.venta { background: #2563eb; }
+.status-badge-lg.alquiler { background: #f59e0b; }
+.type-badge { padding: 6px 14px; border-radius: 6px; font-weight: 700; background: #e2e8f0; color: #475569; font-size: 0.9rem;}
+
+.detail-title { font-size: 2.8rem; color: #0f172a; margin: 0 0 10px; line-height: 1.2; }
+.detail-location { color: #64748b; font-size: 1.2rem; display: flex; align-items: center; gap: 6px; }
+.detail-price { font-size: 2.8rem; color: #10b981; margin: 0; }
+
+/* Gallery */
+.gallery-grid {
+  display: grid; grid-template-columns: 2fr 1fr; gap: 15px; margin-bottom: 3rem; height: 500px; border-radius: 16px; overflow: hidden;
+}
+.main-image { height: 100%; overflow: hidden; }
+.gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; cursor: pointer; }
+.gallery-grid img:hover { transform: scale(1.05); }
+.side-images { display: flex; flex-direction: column; gap: 15px; height: 100%; }
+.side-images img { height: calc(50% - 7.5px); }
+
+@media (max-width: 900px) {
+  .detail-header { flex-direction: column; }
+  .gallery-grid { grid-template-columns: 1fr; height: auto; }
+  .main-image { height: 350px; }
+  .side-images { flex-direction: row; height: 200px; }
+  .side-images img { height: 100%; }
+}
+
+/* Layout Content */
+.detail-content-layout {
+  display: grid; grid-template-columns: 2fr 1fr; gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .detail-content-layout { grid-template-columns: 1fr; }
+}
+
+/* Features Bar */
+.features-bar {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px;
+  background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 3rem; border: 1px solid #f1f5f9;
+}
+.feature-item { display: flex; flex-direction: column; align-items: center; gap: 10px; font-weight: 600; color: #334155; font-size: 1.1rem; text-align: center;}
+.feat-icon-box { background: #eff6ff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #2563eb; font-size: 1.4rem; }
+
+.description-section, .amenities-section { margin-bottom: 3rem; }
+.description-section h3, .amenities-section h3 { font-size: 1.6rem; color: #0f172a; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;}
+.description-section p { color: #475569; line-height: 1.8; font-size: 1.1rem; margin-bottom: 15px;}
+
+.amenities-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.amenities-list li { display: flex; align-items: center; gap: 10px; color: #475569; font-size: 1.1rem; }
+.check-icon { color: #10b981; }
+
+/* Sidebar Contact */
+.contact-sidebar { position: sticky; top: 100px; }
+.contact-card {
+  background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; text-align: center;
+}
+.contact-card h3 { color: #0f172a; margin-bottom: 15px; font-size: 1.5rem;}
+.contact-card p { color: #64748b; margin-bottom: 25px; line-height: 1.6; }
+
+.btn-whatsapp-large {
+  display: flex; justify-content: center; align-items: center; gap: 10px;
+  width: 100%; background-color: #25D366; color: white; text-decoration: none;
+  padding: 16px; border-radius: 8px; font-weight: 700; font-size: 1.1rem; margin-bottom: 15px; transition: all 0.3s;
+}
+.btn-whatsapp-large:hover { background-color: #128C7E; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);}
+.wsp-icon { font-size: 1.5rem; }
+
+.btn-outline-full {
+  width: 100%; background: transparent; border: 2px solid #e2e8f0; color: #475569;
+  padding: 14px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 1.05rem;
+}
+.btn-outline-full:hover { border-color: #0f172a; color: #0f172a; }

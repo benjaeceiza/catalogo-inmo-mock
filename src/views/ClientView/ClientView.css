@@ -1,0 +1,75 @@
+.client-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1; /* Hace que el contenido principal empuje al footer hacia abajo */
+}
+
+.client-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Importante para el botón flotante */
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* --- WHATSAPP FLOTANTE --- */
+.floating-wsp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  animation: pulse-green 2s infinite;
+}
+
+.floating-wsp:hover {
+  background-color: #128c7e;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.floating-wsp-icon {
+  font-size: 2rem;
+}
+
+/* Animación de latido para llamar la atención */
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-wsp {
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+  }
+  .floating-wsp-icon {
+    font-size: 1.8rem;
+  }
+}

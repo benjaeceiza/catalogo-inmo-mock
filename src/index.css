@@ -1,0 +1,35 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+  color: #334155;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ocultamos el navbar temporal de desarrollo para que quede más limpio el diseño */
+.dev-nav {
+  background: #0f172a;
+  padding: 10px 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.dev-nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.dev-nav a:hover {
+  color: #ffffff;
+}
