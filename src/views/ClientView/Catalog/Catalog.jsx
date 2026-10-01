@@ -1,40 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBed, FaBath, FaRulerCombined, FaMapMarkerAlt, FaSearch, FaFilter } from 'react-icons/fa';
+import { FaBed, FaBath, FaRulerCombined, FaMapMarkerAlt, FaSearch, FaFilter, FaTimes } from 'react-icons/fa';
 import './Catalog.css';
 
 const Catalog = ({ properties }) => {
-  // Estados para los filtros
   const [searchTerm, setSearchTerm] = useState('');
   const [operation, setOperation] = useState('Todos');
   const [propertyType, setPropertyType] = useState('Todos');
+  
+  // Nuevo estado para controlar si los filtros están visibles en celular
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  // Lógica de filtrado en tiempo real
+  // Cada vez que entramos al catálogo, arranca arriba de todo
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const filteredProperties = properties.filter((prop) => {
     const matchSearch = prop.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                         prop.location.city.toLowerCase().includes(searchTerm.toLowerCase());
     const matchOperation = operation === 'Todos' || prop.operation === operation;
     const matchType = propertyType === 'Todos' || prop.type === propertyType;
-    
     return matchSearch && matchOperation && matchType;
   });
 
   return (
     <div className="catalog-page">
-      {/* Header del Catálogo */}
       <div className="catalog-header">
         <h1>Catálogo de Propiedades</h1>
-        <p>Encontrá la opción perfecta para vos usando nuestros filtros avanzados.</p>
+        <p>Encontrá la opción perfecta usando nuestros filtros avanzados.</p>
       </div>
 
       <div className="catalog-container">
         
-        {/* Barra de Filtros (Sidebar o Topbar dependiendo el tamaño) */}
-        <aside className="filters-sidebar">
+        {/* Botón exclusivo para Mobile */}
+        <div className="mobile-filter-toggle">
+          <button 
+            className="btn-outline-full" 
+            onClick={() => setShowMobileFilters(!showMobileFilters)}
+          >
+            {showMobileFilters ? <FaTimes /> : <FaFilter />} 
+            {showMobileFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
+          </button>
+        </div>
+
+        {/* Sidebar de Filtros (Se oculta en mobile si showMobileFilters es false) */}
+        <aside className={`filters-sidebar ${showMobileFilters ? 'open' : ''}`}>
           <div className="filters-card">
-            <h3><FaFilter /> Filtros</h3>
+            <h3 className="desktop-only-title"><FaFilter /> Filtros</h3>
             
-            {/* Buscador de texto */}
             <div className="filter-group">
               <label>Buscar</label>
               <div className="search-input-wrapper">
@@ -48,7 +62,6 @@ const Catalog = ({ properties }) => {
               </div>
             </div>
 
-            {/* Filtro por Operación (Pills) */}
             <div className="filter-group">
               <label>Operación</label>
               <div className="pills-container">
@@ -58,7 +71,6 @@ const Catalog = ({ properties }) => {
               </div>
             </div>
 
-            {/* Filtro por Tipo */}
             <div className="filter-group">
               <label>Tipo de Inmueble</label>
               <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)}>
@@ -69,7 +81,6 @@ const Catalog = ({ properties }) => {
               </select>
             </div>
 
-            {/* Botón para limpiar filtros */}
             <button 
               className="btn-clear-filters"
               onClick={() => {
@@ -83,7 +94,7 @@ const Catalog = ({ properties }) => {
           </div>
         </aside>
 
-        {/* Grilla de Resultados */}
+        {/* Resultados */}
         <main className="catalog-results">
           <div className="results-info">
             <span>Mostrando <strong>{filteredProperties.length}</strong> propiedades</span>
@@ -92,7 +103,10 @@ const Catalog = ({ properties }) => {
           {filteredProperties.length === 0 ? (
             <div className="no-results">
               <h2>Ups... no hay resultados</h2>
-              <p>No encontramos propiedades que coincidan con tu búsqueda. Probá cambiando los filtros.</p>
+              <p>No encontramos propiedades que coincidan con tu búsqueda.</p>
+              <button className="btn-primary" onClick={() => {
+                setSearchTerm(''); setOperation('Todos'); setPropertyType('Todos');
+              }}>Borrar filtros</button>
             </div>
           ) : (
             <div className="property-grid">
@@ -122,7 +136,6 @@ const Catalog = ({ properties }) => {
             </div>
           )}
         </main>
-
       </div>
     </div>
   );

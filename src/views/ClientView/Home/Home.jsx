@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
-import { FaBed, FaBath, FaRulerCombined, FaMapMarkerAlt, FaStar, FaBuilding, FaTree, FaCity, FaHome } from 'react-icons/fa';
+import { FaBed, FaBath, FaRulerCombined, FaMapMarkerAlt, FaStar, FaBuilding, FaTree, FaCity, FaHome,FaSearch } from 'react-icons/fa';
 import './Home.css';
 
 const Home = ({ properties }) => {
@@ -12,18 +12,34 @@ const Home = ({ properties }) => {
       {/* 1. HERO SECTION */}
       <header className="hero-section">
         <div className="hero-overlay"></div>
+        
         <div className="hero-content">
-          <h1>Encontrá el lugar de tus sueños</h1>
-          <p>Propiedades exclusivas seleccionadas para vos.</p>
+          <div className="hero-text-luxury">
+            <h1 className="title-animate">Elevá tu <span className="text-gradient">estilo de vida</span>.</h1>
+            <p className="subtitle-animate">Accedé al catálogo de propiedades más exclusivo y encontrá el hogar que siempre soñaste.</p>
+          </div>
           
-          <div className="glass-search-bar">
-            <input type="text" placeholder="¿Dónde querés vivir? (Ej: Centro)" className="search-input" />
-            <select className="search-select">
-              <option value="">Tipo de Propiedad</option>
-              <option value="casa">Casa</option>
-              <option value="departamento">Departamento</option>
-            </select>
-            <button className="btn-primary">Buscar</button>
+          {/* Buscador tipo "Píldora" (Pill) */}
+          <div className="search-pill-wrapper fade-up-animate">
+            <div className="search-pill">
+              <div className="pill-input-group">
+                <FaSearch className="pill-icon" />
+                <input type="text" placeholder="¿A dónde te querés mudar?" />
+              </div>
+              
+              <div className="pill-divider"></div>
+              
+              <div className="pill-select-group">
+                <select>
+                  <option value="">Tipo de Propiedad</option>
+                  <option value="casa">Casa</option>
+                  <option value="departamento">Departamento</option>
+                  <option value="terreno">Terreno</option>
+                </select>
+              </div>
+              
+              <button className="btn-pill-search">Explorar</button>
+            </div>
           </div>
         </div>
       </header>

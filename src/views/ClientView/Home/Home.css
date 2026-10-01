@@ -1,56 +1,189 @@
-/* --- HERO SECTION --- */
+/* =========================================
+   1. HERO SECTION LUXURY (CLEAN & RESPONSIVE)
+========================================= */
 .hero-section {
   position: relative;
-  height: 75vh;
-  min-height: 500px;
-  background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80');
+  height: 90vh; 
+  min-height: 600px;
+  /* Imagen de fondo asegurada */
+  background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80'); 
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
+/* Filtro oscuro para que el texto y el buscador resalten */
 .hero-overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(15, 23, 42, 0.5); /* Overlay más suave */
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65); /* Un azul muy oscuro casi negro, semi-transparente */
 }
 
 .hero-content {
   position: relative;
   z-index: 10;
-  text-align: center;
-  color: white;
-  width: 90%;
-  max-width: 850px;
-}
-
-.hero-content h1 { font-size: 3.8rem; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-.hero-content p { font-size: 1.3rem; margin-bottom: 40px; text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
-
-@media (max-width: 768px) {
-  .hero-content h1 { font-size: 2.5rem; }
-  .glass-search-bar { flex-direction: column; }
-}
-
-.glass-search-bar {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-  padding: 15px;
+  width: 95%;
+  max-width: 900px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Textos y Gradientes */
+.hero-text-luxury h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-text-luxury p {
+  font-size: 1.3rem;
+  color: #f8fafc;
+  max-width: 650px;
+  margin: 0 auto 45px;
+  line-height: 1.6;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Animaciones de entrada en cascada */
+.title-animate { animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+.subtitle-animate { animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards; opacity: 0; }
+.fade-up-animate { animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards; opacity: 0; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Buscador tipo Píldora */
+.search-pill-wrapper {
+  width: 100%;
+  max-width: 800px;
+}
+
+.search-pill {
+  background: white;
+  border-radius: 50px; 
+  padding: 8px 8px 8px 25px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.pill-input-group, .pill-select-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
   gap: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
-.glass-search-bar input, .glass-search-bar select {
-  flex: 1; padding: 14px; border: none; border-radius: 8px; outline: none; font-family: inherit; font-size: 1rem;
+.pill-icon {
+  color: #64748b;
+  font-size: 1.2rem;
 }
 
-/* --- CATEGORÍAS --- */
+.search-pill input, .search-pill select {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #334155;
+  background: transparent;
+  font-family: inherit;
+}
+
+.search-pill input::placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.pill-divider {
+  width: 2px;
+  height: 30px;
+  background: #e2e8f0;
+  margin: 0 20px;
+}
+
+.btn-pill-search {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 40px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-pill-search:hover {
+  background: #1d4ed8;
+  transform: scale(1.02);
+}
+
+/* =========================================
+   ADAPTACIÓN RESPONSIVE (CELULARES)
+========================================= */
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto;
+    padding: 6rem 1rem 4rem; /* Más espacio en celular */
+  }
+
+  .hero-text-luxury h1 { 
+    font-size: 2.8rem; 
+  }
+  
+  .hero-text-luxury p { 
+    font-size: 1.1rem; 
+    margin-bottom: 30px;
+  }
+  
+  /* El buscador deja de ser píldora y pasa a ser una tarjeta vertical */
+  .search-pill {
+    flex-direction: column;
+    border-radius: 16px; 
+    padding: 20px;
+    gap: 15px;
+  }
+  
+  .pill-divider {
+    width: 100%;
+    height: 1px;
+    margin: 5px 0;
+  }
+  
+  .btn-pill-search {
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 10px;
+  }
+  
+  .pill-input-group, .pill-select-group { 
+    width: 100%; 
+  }
+}
+
+
+/* =========================================
+   2. CATEGORÍAS (EXPLORAR POR)
+========================================= */
 .categories-section {
   padding: 5rem 5%;
   background: #f8fafc;
@@ -60,6 +193,7 @@
   text-align: center;
   margin-bottom: 3rem;
 }
+
 .section-header-center h2 { font-size: 2.2rem; color: #0f172a; margin-bottom: 10px; }
 .section-header-center p { color: #64748b; font-size: 1.1rem; }
 
@@ -89,6 +223,7 @@
 
 .category-card:hover { transform: translateY(-5px); }
 
+/* Fondos de las tarjetas de categoría */
 .category-card.casa { background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600'); }
 .category-card.depto { background-image: url('https://images.unsplash.com/photo-1493809842364-78817add7ff6?w=600'); }
 .category-card.lote { background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600'); }
@@ -100,7 +235,10 @@
 .cat-icon { position: relative; z-index: 10; font-size: 2.5rem; margin-bottom: 10px; }
 .category-card h3 { position: relative; z-index: 10; font-size: 1.2rem; font-weight: 600; }
 
-/* --- DESTACADOS --- */
+
+/* =========================================
+   3. PROPIEDADES DESTACADAS
+========================================= */
 .catalog-section { padding: 5rem 5%; max-width: 1400px; margin: 0 auto; }
 .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 20px;}
 .section-header h2 { font-size: 2.2rem; color: #0f172a; }
@@ -116,6 +254,7 @@
 
 .card-image { position: relative; height: 240px; }
 .card-image img { width: 100%; height: 100%; object-fit: cover; }
+
 .status-badge { position: absolute; top: 15px; left: 15px; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; color: white; letter-spacing: 0.5px;}
 .status-badge.venta { background: #2563eb; }
 .status-badge.alquiler { background: #f59e0b; }
@@ -132,9 +271,12 @@
 .btn-details { display: block; width: 100%; background-color: #f8fafc; color: #0f172a; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 600; transition: all 0.2s; border: 1px solid #e2e8f0;}
 .btn-details:hover { background-color: #0f172a; color: white; }
 
-/* --- BANNER TASACIÓN --- */
+
+/* =========================================
+   4. BANNER TASACIÓN (CALL TO ACTION)
+========================================= */
 .valuation-banner {
-  background-color: #0f172a; /* Azul muy oscuro/elegante */
+  background-color: #0f172a; 
   color: white;
   padding: 6rem 5%;
   text-align: center;
@@ -166,7 +308,10 @@
   color: white;
 }
 
-/* --- MINI ABOUT --- */
+
+/* =========================================
+   5. MINI ABOUT
+========================================= */
 .mini-about-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -207,7 +352,10 @@
 .mini-about-content ul { list-style: none; padding: 0; margin-bottom: 30px; }
 .mini-about-content li { color: #334155; font-size: 1.05rem; margin-bottom: 10px; font-weight: 600; }
 
-/* --- TESTIMONIOS --- */
+
+/* =========================================
+   6. TESTIMONIOS
+========================================= */
 .testimonials-section {
   padding: 5rem 5% 8rem;
   background: #f1f5f9;
